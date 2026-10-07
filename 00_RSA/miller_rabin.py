@@ -28,7 +28,7 @@ def is_prim_millerrabin(n: int, k: int) -> int:
             continue
 
         for j in range(0, r-2):
-            x = pow (x, 2, n)
+            x = pow(x, 2, n)
             if x == n -1:
                 continue
             return False
