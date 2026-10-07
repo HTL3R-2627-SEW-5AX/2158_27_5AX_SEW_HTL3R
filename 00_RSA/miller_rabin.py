@@ -13,24 +13,25 @@ def main() -> None:
     print("Main")
     print(is_prim_millerrabin(10, 10))
 
-def is_prim_millerrabin(n: int, k: int) -> int:
-    if n == 2 and n == 3:
+def is_prim_millerrabin(n: int, k: int) -> bool:
+    if n == 2 or n == 3:
         return True
-    if n % 2 == 0:
+    if n < 2 or n % 2 == 0:
         return False
 
     d, r = find_powers_of_2_in_n_minus_1(n)
-    for i in range(0, k):
-        a = random.randint(2, n - 1)
+    for i in range(k):
+        a = random.randint(2, n - 2)
         x = pow(a, d, n)
 
-        if x == 1 or x == n -1:
+        if x == 1 or x == n - 1:
             continue
 
-        for j in range(0, r-2):
+        for j in range(r - 1):
             x = pow(x, 2, n)
-            if x == n -1:
-                continue
+            if x == n - 1:
+                break
+        else:
             return False
     return True
 
