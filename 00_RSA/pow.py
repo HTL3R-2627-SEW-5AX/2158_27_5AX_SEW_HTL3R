@@ -11,7 +11,22 @@ def main() -> None:
     print(pow(100, 1000, 100))
     print(pow(99, 999, 100))
 
+
 def pow(a: float, b: int, n: int = None) -> float:
+    """
+    Berechnet die Potenz von a hoch b (optional mit Modulo n)
+    mittels binärer Exponentiation.
+
+    Beispiele:
+    >>> pow(2, 3)
+    8.0
+    >>> pow(2, -2)
+    0.25
+    >>> pow(2, 10, 1000)
+    24.0
+    >>> pow(100, 1000, 100)
+    0.0
+    """
     if b < 0:
         a = 1 / a
         b = -b
@@ -30,6 +45,7 @@ def pow(a: float, b: int, n: int = None) -> float:
         b >>= 1
 
     return result
+
 
 if __name__ == "__main__":
     main()
