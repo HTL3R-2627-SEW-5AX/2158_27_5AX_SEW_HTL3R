@@ -3,10 +3,26 @@ __date__ = "07/10/2026"
 __version__ = "1.0"
 __license__ = "GNU GPLv3"
 
+
 def main() -> None:
     print("Main")
 
+
 def gcd(a, b):
+    """
+    Berechnet den größten gemeinsamen Teiler (ggT) von a und b
+    mittels des Euklidischen Algorithmus.
+
+    Beispiele:
+    >>> gcd(48, 18)
+    6
+    >>> gcd(17, 13)
+    1
+    >>> gcd(10, 5)
+    5
+    >>> gcd(10, 0)
+    10
+    """
     while b != 0:
         a, b = b, a % b
     return a
