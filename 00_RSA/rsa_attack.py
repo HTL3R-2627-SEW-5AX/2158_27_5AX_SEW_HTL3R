@@ -2,19 +2,26 @@ __author__ = "Laurin Wolf"
 __date__ = "07/10/2026"
 __version__ = "1.0"
 __license__ = "GNU GPLv3"
+
 import argparse
 import math
 import sys
 
-def main() -> None:
-    print("Main")
-
-
 
 def fermat_factorization(n: int, max_attempts: int = None):
-    """Faktorisiert den RSA-Modul n mittels Fermat-Faktorisierung.
+    """
+    Faktorisiert den RSA-Modul n mittels Fermat-Faktorisierung.
+    Gibt ein Tupel (p, q, attempts) zurück.
 
-    Rückgabe: (p, q, attempts)
+    Beispiele:
+    >>> fermat_factorization(15)
+    (3, 5, 1)
+    >>> fermat_factorization(10)
+    (2, 5, 1)
+    >>> fermat_factorization(35)
+    (5, 7, 1)
+    >>> fermat_factorization(17, max_attempts=5)
+    (None, None, 5)
     """
     if n <= 0:
         raise ValueError("Der Modul muss eine positive Ganzzahl sein.")
@@ -48,7 +55,7 @@ def fermat_factorization(n: int, max_attempts: int = None):
         a += 1
 
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(
         description="Fermat-Angriff auf einen RSA-Modul N."
     )
@@ -67,7 +74,7 @@ def main():
         metavar="MAX",
         help="Maximale Versuche",
     )
-    parser.add_argument("modul", type=int, help="Der zu faktorisiere RSA-Modul N")
+    parser.add_argument("modul", type=int, help="Der zu faktorisierende RSA-Modul N")
 
     args = parser.parse_args()
 
@@ -89,9 +96,6 @@ def main():
     else:
         print((p, q))
 
-
-if __name__ == "__main__":
-    main()
 
 if __name__ == "__main__":
     main()
